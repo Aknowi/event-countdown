@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [eventName, setEventName] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  console.log(eventName);
+
+  const handleSubmit = () => {
+    event.preventDefault();
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="event-name">Nazwa wydarzenia</label>
+        <input
+          type="text"
+          id="event-name"
+          name="event-name"
+          value={eventName}
+          onChange={(e) => setEventName(e.target.value)}
+          placeholder="Wpisz nazwę wydarzenia"
+        ></input>
+        <label htmlFor="event-date">Data wydarzenia</label>
+        <input
+          type="date"
+          id="event-date"
+          name="event-date"
+          value={eventDate}
+          onChange={(e) => setEventDate(e.target.value)}
+          min="1960-01-01"
+          max="2050-01-01"
+        ></input>
+        <button type="submit">Stwórz</button>
+      </form>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
