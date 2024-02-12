@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import "./App.css";
-// import Event from "./Components/Event";
+import "./index.css";
+import Event from "./Components/Event";
 
 /* dodanie errorów: 
    - brak wpisanej daty i nazwy wydarzenia
@@ -58,7 +59,8 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <h1>Odliczaj czas</h1>
+      <form onSubmit={handleSubmit} className="event-form">
         <label htmlFor="event-name">Nazwa wydarzenia</label>
         <input
           type="text"
@@ -67,6 +69,7 @@ function App() {
           value={eventInput.eventName}
           onChange={handleInputOnChange}
           placeholder="Wpisz nazwę wydarzenia"
+          className="event-form-input"
         ></input>
         <label htmlFor="event-date">Data wydarzenia</label>
         <input
@@ -77,14 +80,14 @@ function App() {
           onChange={handleInputOnChange}
           min="1900-01-01" //min data dzisiejsza? Błąd nie moze być wcześniejsza
           max="2050-01-01"
+          className="event-form-input"
         ></input>
-        <button type="submit">Stwórz</button>
+        <div className="break"></div>
+        <button type="submit" className="event-form-button">
+          Stwórz
+        </button>
       </form>
-      {/* <Event eventDate={eventDate} eventName={eventName} /> */}
-      <div>
-        <h3>{eventName}</h3>
-        <p>{`Do daty ${eventDate} pozostało ${eventCountDown}`}</p>
-      </div>
+      <Event date={eventDate} name={eventName} timer={eventCountDown} />
     </>
   );
 }
