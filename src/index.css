@@ -10,15 +10,33 @@
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
   font-size: 1.4em;
-  background: #e9e7ce;
+  background: #edeae5;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+.title-box {
+  background: fixed#9FeDD7;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+h1 {
+  color: #fff;
+  display: inline;
+}
+
+.clock {
+  width: 200px;
+  height: 200px;
 }
 
 .event-form {

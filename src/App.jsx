@@ -59,7 +59,10 @@ function App() {
 
   return (
     <>
-      <h1>Odliczaj czas</h1>
+      <div className="title-box">
+        <div className="clock"></div>
+        <h1>Odliczaj czas</h1>
+      </div>
       <form onSubmit={handleSubmit} className="event-form">
         <label htmlFor="event-name">Nazwa wydarzenia</label>
         <input
