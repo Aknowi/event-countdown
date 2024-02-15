@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import "./index.css";
 import Event from "./Components/Event";
@@ -12,34 +12,7 @@ function App() {
     eventName: "",
     date: "",
   });
-  const [eventCountDown, setEventCountDown] = useState("");
-  const [eventName, setEventName] = useState("");
-  const [eventDate, setEventDate] = useState("");
-
-  const second = 1000;
-  const minute = second * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const intervalIdRef = useRef(null);
-
-  const getCountDown = () => {
-    let currentDate = new Date();
-    let eventEnd = new Date(eventInput.date);
-    let timeSpan = eventEnd - currentDate;
-    let days = Math.floor(timeSpan / day);
-    let hours = Math.floor((timeSpan % day) / hour);
-    let minutes = Math.floor((timeSpan % hour) / minute);
-    let seconds = Math.floor((timeSpan % minute) / second);
-
-    console.log(timeSpan);
-
-    if (timeSpan <= 0) {
-      clearInterval(intervalIdRef.current); //Sprawdzic jeszcze logikę
-      setEventCountDown("Wydarzenie sie już odbyło");
-    } else {
-      setEventCountDown(`${days} : ${hours} : ${minutes} : ${seconds}`);
-    }
-  };
+  const [eventDetails, setEventDetails] = useState([]);
 
   const handleInputOnChange = (e) => {
     const { name, value } = e.target;
@@ -51,12 +24,15 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    clearInterval(intervalIdRef.current);
-    setEventName(eventInput.eventName);
-    setEventDate(eventInput.date);
-    intervalIdRef.current = setInterval(getCountDown, 1000);
-  };
 
+    let obj = {
+      eventName: eventInput.eventName,
+      eventDate: eventInput.date,
+    };
+    console.log(obj);
+    setEventDetails([...eventDetails, obj]);
+  };
+  console.log(eventDetails);
   return (
     <>
       <div className="title-box">
@@ -81,7 +57,7 @@ function App() {
           name="date"
           value={eventInput.date}
           onChange={handleInputOnChange}
-          min="1900-01-01" //min data dzisiejsza? Błąd nie moze być wcześniejsza
+          min="2000-01-01"
           max="2050-01-01"
           className="event-form-input"
         ></input>
@@ -90,7 +66,13 @@ function App() {
           Stwórz
         </button>
       </form>
-      <Event date={eventDate} name={eventName} timer={eventCountDown} />
+      {eventDetails.map((eventDetail, index) => (
+        <Event
+          key={index}
+          date={eventDetail.eventDate}
+          name={eventDetail.eventName}
+        />
+      ))}
     </>
   );
 }
