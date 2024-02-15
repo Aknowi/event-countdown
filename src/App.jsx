@@ -12,6 +12,7 @@ function App() {
     eventName: "",
     date: "",
   });
+  console.log(eventInput);
   const [eventDetails, setEventDetails] = useState([]);
 
   const handleInputOnChange = (e) => {
@@ -29,10 +30,8 @@ function App() {
       eventName: eventInput.eventName,
       eventDate: eventInput.date,
     };
-    console.log(obj);
     setEventDetails([...eventDetails, obj]);
   };
-  console.log(eventDetails);
   return (
     <>
       <div className="title-box">
@@ -61,18 +60,19 @@ function App() {
           max="2050-01-01"
           className="event-form-input"
         ></input>
-        <div className="break"></div>
         <button type="submit" className="event-form-button">
           Stwórz
         </button>
       </form>
-      {eventDetails.map((eventDetail, index) => (
-        <Event
-          key={index}
-          date={eventDetail.eventDate}
-          name={eventDetail.eventName}
-        />
-      ))}
+      <div className="event-timers">
+        {eventDetails.map((eventDetail, index) => (
+          <Event
+            key={index}
+            date={eventDetail.eventDate}
+            name={eventDetail.eventName}
+          />
+        ))}
+      </div>
     </>
   );
 }

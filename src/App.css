@@ -21,14 +21,20 @@
 
 /* Event */
 
-.events-box {
-  width: 700px;
-  height: 200px;
-  background: #76afb8;
+.event-box {
+  width: 500px;
+  height: 100px;
+  background: #026670;
   border-radius: 50px;
+  color: #fff;
+  margin: 20px;
 }
 
-.events-box-title {
+.event-box > * {
+  margin: 0;
+}
+
+.event-box-title {
   font-family: "RidayParcia", "Quicksand", sans-serif;
   font-size: 36px;
 }
