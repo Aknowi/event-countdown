@@ -1,4 +1,9 @@
-#root {
+@font-face {
+  font-family: "Digital";
+  src: url("ImagesAndFonts/wwDigital.woff") format("opentype");
+}
+
+root {
   width: 100vw;
   margin: 0;
   text-align: center;
@@ -22,12 +27,14 @@
 /* Event */
 
 .event-box {
-  width: 500px;
-  height: 100px;
+  width: 350px;
+  height: 80px;
   background: #026670;
   border-radius: 50px;
   color: #fff;
-  margin: 20px;
+  margin: 0;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 .event-box > * {
@@ -35,6 +42,17 @@
 }
 
 .event-box-title {
-  font-family: "RidayParcia", "Quicksand", sans-serif;
-  font-size: 36px;
+  font-family: "Allison", "Quicksand", sans-serif;
+  font-size: 32px;
+  letter-spacing: 1px;
+}
+
+.event-box-date {
+  font-size: 10px;
+  font-style: italic;
+  color: #d6d6d6;
+}
+
+.event-box-timer {
+  font-family: "Digital", sans-serif;
 }

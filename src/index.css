@@ -1,10 +1,6 @@
 /* Font Quicksand  */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-/* Font RidayParcia  */
-@font-face {
-  font-family: "RidayParcia";
-  src: url("ImagesAndFonts/Ridayparcia-JRgqn.oft") format("opentype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Allison&display=swap");
 
 :root {
   font-family: "Quicksand", sans-serif;
@@ -21,7 +17,7 @@ body {
 
 /* Title section */
 .title-box {
-  background: fixed#9FeDD7;
+  background: #9fedd7;
   height: 40vh;
   display: flex;
   flex-wrap: wrap-reverse;
@@ -30,10 +26,16 @@ body {
   gap: 50px;
   position: relative;
   z-index: 1;
+  line-height: 0px;
 }
 
 .wave-line {
-  background-color: #9fedd7;
+  background: rgb(159, 237, 215);
+  background: linear-gradient(
+    180deg,
+    rgba(159, 237, 215, 1) 90%,
+    rgba(237, 234, 229, 1) 100%
+  );
   position: absolute;
   z-index: -1;
   bottom: 0;
@@ -90,6 +92,14 @@ h1 {
 
 /* Timer section */
 
+.event-timers {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
 /* Media Queries */
 
 @media (min-width: 521px) and (max-width: 840px) {
@@ -112,25 +122,38 @@ h1 {
   }
 }
 
+@media (min-width: 725px) and (max-width: 1075px) {
+  .event-timers {
+    grid-template-columns: repeat(2, 350px);
+  }
+}
+
 @media (max-width: 520px) {
   .event-form {
-    margin-top: 20px;
+    margin-top: 15px;
     grid-row-gap: 20px;
     grid-template-columns: minmax(200px, 1fr);
   }
 
   h1 {
     font-size: 1.4em;
-    margin-top: 10px;
+    margin: 20px 0 10px 0;
   }
 
   .clock {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
   }
 
   .title-box {
-    height: auto;
+    height: 30vh;
     gap: 10px;
+  }
+}
+
+@media (max-width: 724px) {
+  .event-timers {
+    grid-template-columns: 350px;
+    margin: 10px;
   }
 }
