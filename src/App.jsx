@@ -15,9 +15,10 @@ function App() {
     eventName: "",
     date: "",
   });
-  console.log(eventInput);
-  const [eventDetails, setEventDetails] = useState([]);
 
+  const [eventDetails, setEventDetails] = useState([]);
+  const [error, setError] = useState("");
+  console.log(error);
   const handleInputOnChange = (e) => {
     const { name, value } = e.target;
     setEventInput({
@@ -28,12 +29,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let obj = {
-      eventName: eventInput.eventName,
-      eventDate: eventInput.date,
-    };
-    setEventDetails([...eventDetails, obj]);
+    if (eventInput.eventName !== "" && eventInput.date !== "") {
+      setError("");
+      let obj = {
+        eventName: eventInput.eventName,
+        eventDate: eventInput.date,
+      };
+      setEventDetails([...eventDetails, obj]);
+    } else {
+      setError("Nie wszystkie dane zostały uzupełnione. Spróbuj jeszcze raz.");
+    }
   };
   return (
     <>
@@ -52,7 +57,7 @@ function App() {
           value={eventInput.eventName}
           onChange={handleInputOnChange}
           placeholder="Wpisz nazwę wydarzenia"
-          className="event-form-input"
+          className={`event-form-input ${error !== "" ? "error-input" : ""}`}
         ></input>
         <label htmlFor="event-date">Data wydarzenia</label>
         <input
@@ -63,12 +68,13 @@ function App() {
           onChange={handleInputOnChange}
           min="2000-01-01"
           max="2050-01-01"
-          className="event-form-input"
+          className={`event-form-input ${error !== "" ? "error-input" : ""}`}
         ></input>
         <button type="submit" className="event-form-button">
-          <img src={createButton} alt="create-button" />
+          <img src={createButton} alt="create-button" className="create-svg" />
         </button>
       </form>
+      {error !== "" && <p className="error-note">{error}</p>}
       <div className="event-timers">
         {eventDetails.map((eventDetail, index) => (
           <Event
