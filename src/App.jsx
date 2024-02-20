@@ -4,12 +4,8 @@ import "./index.css";
 import Event from "./Components/Event";
 import waveLine from "./ImagesAndFonts/Wave.svg";
 import createButton from "./ImagesAndFonts/Create.svg";
+import clock from "./ImagesAndFonts/Clock.png";
 
-/* dodanie errorów: 
-   - brak wpisanej daty i nazwy wydarzenia
-   - dodanie informacji, ze juz jest ten dzien
-   - poprawić linie z obrazka css
-*/
 function App() {
   const [eventInput, setEventInput] = useState({
     eventName: "",
@@ -43,9 +39,9 @@ function App() {
   return (
     <>
       <div className="title-box">
-        <img src={waveLine} alt="wave-line" className="wave-line" />
-        <div className="clock"></div>
+        <img src={clock} alt="clock" className="clock" />
         <h1>Odliczaj czas</h1>
+        <img src={waveLine} alt="wave-line" className="wave-line" />
       </div>
 
       <form onSubmit={handleSubmit} className="event-form">
