@@ -1,8 +1,27 @@
-# React + Vite
+# Event countdown
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project provides live timers for events entered in form. 
 
-Currently, two official plugins are available:
+## How to run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+`npm install` - install all dependencies  
+`npm run dev` - run dev mode on port 5173
+
+## Technologies
+
+- React
+- JavaScript
+- HTML
+- CSS
+- Vite
+
+## Functionalities
+
+- Form
+- Timer
+- Validation form
+- RWD
+
+## Live
+
+https://aknowi.github.io/event-countdown/
